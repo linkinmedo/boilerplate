@@ -17,13 +17,29 @@
     "typescript": "3.5.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=8080 react-scripts start",
     "build": "react-scripts build",
+    "serve": "serve -l 8080 -s build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,scss,css,md}": [
+      "pretty-quick --staged"
+    ],
+    "*.{ts, tsx, js, jsx}": [
+      "pretty-quick --staged",
+      "eslint src/ --fix",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
@@ -47,7 +63,10 @@
     "@types/react-redux": "^7.1.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
     "redux-devtools-extension": "^2.13.8"
   }
 }
