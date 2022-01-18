@@ -1,5 +1,6 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
+import { jsx } from "@emotion/react";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo.svg";
